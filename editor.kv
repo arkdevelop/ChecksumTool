@@ -6,9 +6,12 @@ Root:
     text_sha1: text_sha1
     text_sha256: text_sha256
     text_sha512: text_sha512
+    text_compare: text_compare
+    compare_label: compare_label
 
     BoxLayout:
         orientation: 'vertical'
+        spacing: 20
 
         BoxLayout:
             orientation: 'horizontal'
@@ -100,6 +103,30 @@ Root:
             Button:
                 text: 'Copy SHA-512'
                 on_release: root.copysha512()
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 30
+            spacing: 20
+
+            TextInput:
+                id: text_compare
+                hint_text: 'Compare Hash...'
+
+            Button:
+                text: 'Compare'
+                on_release: root.compareHashes()
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 30
+
+            Label:
+                id: compare_label
+                size: self.texture_size
+                text: ''
 
 <LoadDialog>:
     BoxLayout:

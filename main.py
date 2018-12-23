@@ -16,7 +16,7 @@ class LoadDialog(FloatLayout):
 
 class Root(FloatLayout):
     Config.set('graphics', 'width', '500')
-    Config.set('graphics', 'height', '200')
+    Config.set('graphics', 'height', '335')
 
     loadfile = ObjectProperty(None)
     file_input = ObjectProperty(None)
@@ -24,6 +24,8 @@ class Root(FloatLayout):
     text_sha1 = ObjectProperty(None)
     text_sha256 = ObjectProperty(None)
     text_sha512 = ObjectProperty(None)
+    text_compare = ObjectProperty(None)
+    compare_label = ObjectProperty(None)
 
     def dismiss_popup(self):
         self._popup.dismiss()
@@ -44,6 +46,24 @@ class Root(FloatLayout):
 
     def copysha512(self):
         Clipboard.copy(self.text_sha512.text)
+
+    def compareHashes(self):
+        if self.text_compare.text != "":
+            if self.text_compare.text == self.text_md5.text:
+                self.compare_label.text = "MD5 Match found"
+
+            elif self.text_compare.text == self.text_sha1.text:
+                self.compare_label.text = "SHA-1 Match found"
+
+            elif self.text_compare.text == self.text_sha256.text:
+                self.compare_label.text = "SHA-256 Match found"
+
+            elif self.text_compare.text == self.text_sha512.text:
+                self.compare_label.text = "SHA-512 Match found"
+            else:
+                self.compare_label.text = "No match found"
+        else:
+            self.compare_label.text = "Nothing to match"
 
     def load(self, path, filename):
         BUF_SIZE = 65536
