@@ -2,17 +2,23 @@
 
 Root:
     text_input: text_input
+    file_input: file_input
 
     BoxLayout:
         orientation: 'vertical'
         BoxLayout:
             size_hint_y: None
             height: 30
+
+            TextInput:
+                id: file_input
+                text: ''
+
             Button:
                 text: 'Load'
                 on_release: root.show_load()
 
-        BoxLayout:
+        FloatLayout:
             TextInput:
                 id: text_input
                 text: ''

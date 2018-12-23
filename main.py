@@ -15,6 +15,7 @@ class LoadDialog(FloatLayout):
 class Root(FloatLayout):
     loadfile = ObjectProperty(None)
     text_input = ObjectProperty(None)
+    file_input = ObjectProperty(None)
 
     def dismiss_popup(self):
         self._popup.dismiss()
@@ -33,10 +34,14 @@ class Root(FloatLayout):
         sha512 = hashlib.sha512()
 
         with open(os.path.join(path, filename[0]), 'rb') as stream:
+
+            self.file_input.text = filename[0]
+
             while True:
                 data = stream.read(BUF_SIZE)
                 if not data:
                     break
+
                 md5.update(data)
                 sha1.update(data)
                 sha256.update(data)
