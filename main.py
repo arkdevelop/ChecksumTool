@@ -4,6 +4,7 @@ from kivy.factory import Factory
 from kivy.properties import ObjectProperty
 from kivy.uix.popup import Popup
 from kivy.core.clipboard import Clipboard
+from kivy.config import Config
 
 import hashlib
 import os
@@ -14,6 +15,9 @@ class LoadDialog(FloatLayout):
 
 
 class Root(FloatLayout):
+    Config.set('graphics', 'width', '500')
+    Config.set('graphics', 'height', '200')
+
     loadfile = ObjectProperty(None)
     file_input = ObjectProperty(None)
     text_md5 = ObjectProperty(None)
