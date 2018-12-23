@@ -1,27 +1,100 @@
 #:kivy 1.1.0
 
 Root:
-    text_input: text_input
     file_input: file_input
+    text_md5: text_md5
+    text_sha1: text_sha1
+    text_sha256: text_sha256
+    text_sha512: text_sha512
 
     BoxLayout:
         orientation: 'vertical'
+
         BoxLayout:
+            orientation: 'horizontal'
             size_hint_y: None
             height: 30
 
             TextInput:
                 id: file_input
                 text: ''
+                readonly: True
 
             Button:
                 text: 'Load'
                 on_release: root.show_load()
 
-        FloatLayout:
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 30
+
+            Label:
+                size: self.texture_size
+                text: 'MD5'
+
             TextInput:
-                id: text_input
+                id: text_md5
                 text: ''
+                readonly: True
+
+            Button:
+                text: 'Copy MD5'
+                on_release: root.copymd5()
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 30
+
+            Label:
+                size: self.texture_size
+                text: 'SHA-1'
+
+            TextInput:
+                id: text_sha1
+                text: ''
+                readonly: True
+
+            Button:
+                text: 'Copy SHA-1'
+                on_release: root.copysha1()
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 30
+
+            Label:
+                size: self.texture_size
+                text: 'SHA-256'
+
+            TextInput:
+                id: text_sha256
+                text: ''
+                readonly: True
+
+            Button:
+                text: 'Copy SHA-256'
+                on_release: root.copysha256()
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 30
+
+            Label:
+                size: self.texture_size
+                text: 'SHA-512'
+
+            TextInput:
+                id: text_sha512
+                text: ''
+                readonly: True
+
+            Button:
+                text: 'Copy SHA-512'
+                on_release: root.copysha512()
 
 <LoadDialog>:
     BoxLayout:
